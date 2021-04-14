@@ -3,13 +3,16 @@ const router = express.Router(); //création de notre routeur express
 
 const sauceCtrl = require("../controllers/sauces"); //import des controllers
 
-//les différentes routes POST PUT DELETE GET
-router.post("/", sauceCtrl.createSauce);
-router.put("/:id", sauceCtrl.modifySauce);
-router.delete("/:id", sauceCtrl.deleteSauce);
-router.get("/:id", sauceCtrl.getOneThing);
-router.get("/", sauceCtrl.getAllSauces);
+//importation de nos middlewares
+const auth = require("../middleware/auth");
 
-// router.post(/:id/like, sauceCtrl.likeDislikeSauce)
+//les différentes routes POST PUT DELETE GET
+router.post("/", auth, sauceCtrl.createSauce);
+router.put("/:id", auth, sauceCtrl.modifySauce);
+router.delete("/:id", auth, sauceCtrl.deleteSauce);
+router.get("/:id", auth, sauceCtrl.getOneThing);
+router.get("/", auth, sauceCtrl.getAllSauces);
+
+// router.post(/:id/like, auth, sauceCtrl.likeDislikeSauce)
 
 module.exports = router; // export du router
