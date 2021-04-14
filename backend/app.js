@@ -12,11 +12,13 @@ const userRoutes = require("./routes/user");
 
 const app = express();
 
-//liaison à la base de donéés
+//liaison à la base de donnéés
 mongoose
     .connect("mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@" + process.env.DB_HOST, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false,
     })
     .then(() => console.log("Connexion à MongoDB réussie !"))
     .catch(() => console.log("Connexion à MongoDB échouée !"));
