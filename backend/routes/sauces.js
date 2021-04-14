@@ -12,4 +12,4 @@ router.get("/", sauceCtrl.getAllSauces);
 
 // router.post(/:id/like, sauceCtrl.likeDislikeSauce)
 
-module.exports = router; // export du router de ce fichier
+module.exports = router; // export du router
